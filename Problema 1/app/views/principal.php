@@ -6,6 +6,8 @@
 <title>Document</title>
 </head>
 <body>
+	<?php include VIEW_DIR.'cabecera.php';?>
+	
 	<form action="">
 		<p><a href="?accion=ver_lista"> Ver la lista de envios</a></p>
 		<p><a href="?accion=Añadir_envio">Añadir nuevo envio</a></p>

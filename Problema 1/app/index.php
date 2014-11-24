@@ -1,4 +1,8 @@
+
 <?php
+session_start();
+$_SESSION["user"]="Admin";
+$_SESSION["pass"]="Admin";
 define("BASE_DIR", __DIR__.'/');
 define("CTRL_DIR", BASE_DIR.'controllers/');
 define("MODEL_DIR", BASE_DIR.'models/');
@@ -15,7 +19,21 @@ else
 {
 	$accion='';
 }
-
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mostrar</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+</body>
+</html>
+<?php 
 switch ($accion)
 {
 	case "ver_lista":
