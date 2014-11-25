@@ -91,12 +91,7 @@ else
  * @param string $default
  * @return string
  */
-function ValorPost($campo, $default = '') {
-	if (isset ( $_POST [$campo] ))
-		return $_POST [$campo];
-	else
-		return $default;
-}
+
 
 
 

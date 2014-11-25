@@ -24,9 +24,27 @@ function ValidaTexto($cadena, $tipo="letras")
 	
 }
 
+/**
+ * 
+ * @param string $cadena
+ * @return boolean
+ */
 function ValidaCorreo($cadena)
 {
 	return  (filter_var ( $cadena, FILTER_VALIDATE_EMAIL ));
 		
 	
+}
+
+/**
+ * devuelve $post para simplificar código
+ * @param string $campo
+ * @param string $default
+ * @return string
+ */
+function ValorPost($campo, $default = '') {
+	if (isset ( $_POST [$campo] ))
+		return $_POST [$campo];
+	else
+		return $default;
 }

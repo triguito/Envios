@@ -101,6 +101,11 @@ class Modelo
 	
 		$Consulta=$this->baseDatos->Consulta("update envio set fechaEntrega='".$fecha_ac."',estado='e' where id=".$cod);
 	}
+	
+	public function Busca($campo,$valor)
+	{
+		$Consulta=$this->baseDatos->Consulta("select * from envio where  '.$campo.' LIKE '".$valor);
+	}
 	/**
 	 * Ordena la fecha para cuando devuelva la base de datos lo ponga en formato dd/mm/aaaa
 	 * @param string $fecha

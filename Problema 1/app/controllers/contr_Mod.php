@@ -2,6 +2,7 @@
 
 include_once MODEL_DIR.'modelo1.php';
 
+
 $Contr_Mod = new Modelo ();
 
 $provincia = $Contr_Mod->Listar ( "select * from tbl_provincias;" );
@@ -86,16 +87,4 @@ if ($_POST) {
 else 
 {
 	include VIEW_DIR.'form_anadir.php';
-}
-/**
- * devuelve $post para simplificar código
- * @param string $campo
- * @param string $default
- * @return string
- */
-function ValorPost($campo, $default = '') {
-	if (isset ( $_POST [$campo] ))
-		return $_POST [$campo];
-	else
-		return $default;
 }

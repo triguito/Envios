@@ -15,7 +15,7 @@
 						<th class="list-group-item-info">Direccion</th>
 						<th class="list-group-item-info">Codigo Postal</th>
 						<th class="list-group-item-info">Poblacion</th>
-						<th class="list-group-item-info">Nombre</th>
+						<th class="list-group-item-info">Provincia</th>
 						<th class="list-group-item-info">Correo</th>
 						<th class="list-group-item-info">Estado</th>
 						<th class="list-group-item-info">fecha Creacion</th>
@@ -35,7 +35,7 @@
 						<td><?=$valor['estado'];?></td>
 						<td><?=$valor['fechaCreacion'];?></td>
 						<td><?=$valor['fechaEntrega'];?></td>
-						<td><?=$valor['obsevaciones'];?></td>
+						<td><?=$valor['observaciones'];?></td>
 						<?php if($valor['estado']!='e'):?>
 						<td class="btn-info"><a href='?accion=Modificar_envio&id=<?=$valor['id']?>'><span class="glyphicon glyphicon-pencil color" ></span></a></td>
 						<td class="btn-danger"><a href='?accion=Eliminar_envio&id=<?=$valor['id']?>'><span class="glyphicon glyphicon-trash color"></span></a></td>
