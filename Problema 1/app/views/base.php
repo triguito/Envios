@@ -18,12 +18,12 @@
 	</div>
 </div>
 
-<div class="container" id="menu">
+<div id="menu">
 	<div class="row">
-		<div class="col-xs-1">
+		<div class="col-xs-2" align="center">
 			<?php include VIEW_DIR.'menu.php';?>
 		</div>
-		<div class="col-xs-11">
+		<div class="col-xs-9">
 			<?php
 			if(isset($_GET['accion']))
 			{
@@ -34,10 +34,21 @@
 				$accion='';
 			} 
 
-			ir_pagina($_GET['accion']);
+			ir_pagina($accion);
 			?>
+		</div>
+		<div class="col-xs-4">
+
 		</div>
 	</div>
 </div>
+<div id="pie">
+	<div class="row">
+		<div class="col-xs-12" align="center">
+			<?php include VIEW_DIR.'pie.php';?>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

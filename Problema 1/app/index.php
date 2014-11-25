@@ -12,17 +12,11 @@ define("CSS_DIR",BASE_DIR.'css/');
 
 
 
-if(isset($_GET['accion']))
-{
-	$accion=$_GET['accion'];
-}
-else 
-{
-	$accion='';
-}
+
 include VIEW_DIR.'base.php';
 function ir_pagina($accion) 
 {
+	
 	switch ($accion)
 	{
 		case "ver_lista":
@@ -37,6 +31,6 @@ function ir_pagina($accion)
 		case "Anotar_recepcion":
 			return include CTRL_DIR.'contr_Recepcion.php';
 		default:
-			return include VIEW_DIR.'base.php';
+			return include VIEW_DIR.'cuerpo.php';
 	}
 }

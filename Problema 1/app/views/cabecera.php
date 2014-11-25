@@ -1,1 +1,1 @@
-<h1>KeNoLLega S.L</h1>
+<h1 class="list-group-item-info">KeNoLLega S.L</h1>

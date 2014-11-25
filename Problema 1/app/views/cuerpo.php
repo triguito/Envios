@@ -1,1 +1,1 @@
-<?php
+<h1>Bienvenidos a gestion de Kenollega.sl</h1>
