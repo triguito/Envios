@@ -33,7 +33,7 @@ CREATE TABLE `bdkenollega`.`envio` (
   `estado` CHAR NULL,
   `fechaCreacion` DATE NULL,
   `fechaEntrega` DATE NULL,
-  `obsevaciones` TEXT NULL,
+  `observaciones` TEXT NULL,
   `provincia` char(2) NOT NULL,
   PRIMARY KEY (`id`)
 )
