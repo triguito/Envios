@@ -8,6 +8,7 @@ define("CTRL_DIR", BASE_DIR.'controllers/');
 define("MODEL_DIR", BASE_DIR.'models/');
 define("VIEW_DIR",BASE_DIR.'views/');
 define("LIBRARY_DIR",BASE_DIR.'library/');
+define("CSS_DIR",BASE_DIR.'css/');
 
 
 
@@ -19,39 +20,23 @@ else
 {
 	$accion='';
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Mostrar</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-</body>
-</html>
-<?php 
-switch ($accion)
+include VIEW_DIR.'base.php';
+function ir_pagina($accion) 
 {
-	case "ver_lista":
-			echo CTRL_DIR;
-			include CTRL_DIR.'contr_Listar.php';
-			break;
-	case "Añadir_envio":
-			include CTRL_DIR.'contr_Anadir.php';
-			break;
-	case "Modificar_envio":
-			include CTRL_DIR.'contr_Mod.php';
-			break;
-	case "Eliminar_envio":
-			include CTRL_DIR.'contr_Eliminar.php';
-			break;
-	case "Anotar_recepcion":
-			include CTRL_DIR.'contr_Recepcion.php';
-			break;
-	default:
-		include VIEW_DIR.'principal.php';
+	switch ($accion)
+	{
+		case "ver_lista":
+				echo CTRL_DIR;
+			return	include CTRL_DIR.'contr_Listar.php';
+		case "Añadir_envio":
+			return include CTRL_DIR.'contr_Anadir.php';
+		case "Modificar_envio":
+			return include CTRL_DIR.'contr_Mod.php';
+		case "Eliminar_envio":
+			return include CTRL_DIR.'contr_Eliminar.php';
+		case "Anotar_recepcion":
+			return include CTRL_DIR.'contr_Recepcion.php';
+		default:
+			return include VIEW_DIR.'base.php';
+	}
 }

@@ -5,7 +5,7 @@
 <title>Mostrar</title>
 </head>
 <body>
-	<table border="1">
+	<table class="table">
 	<tr>
 	<td>Destinatario</td>
 	<td>Telefono</td>
