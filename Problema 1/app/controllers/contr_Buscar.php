@@ -9,6 +9,8 @@ if ($_POST)
 {
 	$campo = ValorPost ( "campo" );
 	$texto = ValorPost ( "texto" );
+	$_SESSION["campo"]=$campo;
+	$_SESSION["texto"]=$texto;
 	
 	$TAMANO_PAGINA=3;
 	
@@ -31,7 +33,7 @@ function paginarBusca($contr,$tamaño,& $pagina,& $total_paginas, & $inicio,$cam
 
 	var_dump($pagina);
 	$inicio = ($pagina - 1) * $tamaño;
-	$total_paginas = ceil ( $contr->NumReg () / $tamaño );
+	$total_paginas = ceil ( $contr->NumRegBuscar($campo,$texto) / $tamaño );
 
 	return $contr->Busca($campo,$texto,$inicio,$tamaño);
 }

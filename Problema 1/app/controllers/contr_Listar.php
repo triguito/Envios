@@ -27,9 +27,19 @@ $envios=paginarLista($Contr_listar, $TAMANO_PAGINA,$pagina,$total_paginas,$inici
 function paginarLista($contr,$tamaño,& $pagina,& $total_paginas, & $inicio )
 {
 	$inicio = ($pagina - 1) * $tamaño;
-	$total_paginas = ceil ( $contr->NumReg () / $tamaño );
 	
-	return $contr->GetLista($inicio, $tamaño );
+	
+	if(isset($_SESSION["campo"])||isset($_SESSION["texto"]))
+	{
+		$total_paginas = ceil ( $contr->NumRegBuscar($_SESSION["campo"],$_SESSION["texto"]) / $tamaño );
+		return $contr->Busca($_SESSION["campo"],$_SESSION["texto"],$inicio,$tamaño);
+		
+	}
+	else 
+	{
+		$total_paginas = ceil ( $contr->NumReg () / $tamaño );
+		return $contr->GetLista($inicio, $tamaño );
+	}
 	
 }
 

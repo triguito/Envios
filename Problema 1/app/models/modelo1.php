@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once LIBRARY_DIR.'bd.php';
 /***
  * clase para el modelo de la base de datos
@@ -45,6 +46,11 @@ class Modelo
 		$sql="select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$tamaño;
 		return $this->Listar($sql);
 	}
+	public function Getprovincia()
+	{
+		$sql="select * from tbl_provincias";
+		return $this->Listar($sql);
+	}
 	/**
 	 * Cuenta los numeros de registros
 	 * @return float
@@ -52,6 +58,14 @@ class Modelo
 	public function NumReg()
 	{
 		$Consulta=$this->baseDatos->Consulta("select count(*) from envio");
+		$reg=$this->baseDatos->fetch_array($Consulta);
+		return $reg[0];
+	}
+	public function NumRegBuscar($campo,$valor)
+	{
+		$sql="select count(*) from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%'";
+		
+		$Consulta=$this->baseDatos->Consulta($sql);
 		$reg=$this->baseDatos->fetch_array($Consulta);
 		return $reg[0];
 	}
@@ -113,7 +127,7 @@ class Modelo
 	{
 		$lista=array();
 		//$Consulta=$this->baseDatos->Consulta("select * from envio where  ".$campo." LIKE '%".$valor."%'");
-		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);
+		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$_SESSION["campo"]." LIKE '%".$_SESSION["texto"]."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);
 		
 		
 	}

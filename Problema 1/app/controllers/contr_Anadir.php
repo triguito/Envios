@@ -3,7 +3,7 @@ include_once MODEL_DIR.'modelo1.php';
 $Contr_Anadir = new Modelo ();
 
 
-$provincia = $Contr_Anadir->Listar ( "select * from tbl_provincias;" );
+$provincia = $Contr_Anadir->Getprovincia();
 
 $errores = array (
 		'dest' => '',
