@@ -11,13 +11,15 @@ $pagina = isset ( $_GET ["pagina"] ) ? $_GET ["pagina"] : 1;
 
 $inicio = ($pagina - 1) * $TAMANO_PAGINA;
 
-$envios = $Contr_listar->Listar ( "select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",3" );
+$total_paginas = ceil ( $Contr_listar->NumReg () / $TAMANO_PAGINA );
+
+$envios = $Contr_listar->Listar ( "select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$TAMANO_PAGINA );
 
 // calculo el total de páginas
 
-$total_paginas = ceil ( $Contr_listar->NumReg () / $TAMANO_PAGINA );
+
 
 /*
- * //pongo el n�mero de registros total, el tamaño de p�gina y la p�gina que se muestra
+ * //pongo el número de registros total, el tamaño de página y la p�gina que se muestra
  */
 include VIEW_DIR.'mostrar_envios.php';

@@ -104,7 +104,11 @@ class Modelo
 	
 	public function Busca($campo,$valor)
 	{
-		$Consulta=$this->baseDatos->Consulta("select * from envio where  '.$campo.' LIKE '".$valor);
+		$lista=array();
+		//$Consulta=$this->baseDatos->Consulta("select * from envio where  ".$campo." LIKE '%".$valor."%'");
+		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%'");
+		
+		
 	}
 	/**
 	 * Ordena la fecha para cuando devuelva la base de datos lo ponga en formato dd/mm/aaaa

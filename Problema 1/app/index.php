@@ -30,6 +30,8 @@ function ir_pagina($accion)
 			return include CTRL_DIR.'contr_Eliminar.php';
 		case "Anotar_recepcion":
 			return include CTRL_DIR.'contr_Recepcion.php';
+		case "Buscar_envio":
+			return include CTRL_DIR.'contr_Buscar.php';
 		default:
 			return include VIEW_DIR.'cuerpo.php';
 	}

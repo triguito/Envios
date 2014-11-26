@@ -4,23 +4,23 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label>Campo</label>
-					<select name="provincia" class="form-control" >
-						<option value=""></option>
-						<option value="destinatario"></option>
-						<option value="tlfno"></option>
-						<option value="direccion"></option>
-						<option value="poblacion"></option>
-						<option value="cp"></option>
-						<option value="email"></option>
-						<option value="fechaCreacion"></option>
-						<option value="fechaEntrega"></option>
-						<option value="observaciones"></option>
+					<select name="campo" class="form-control" >
+						<option></option>
+						<option value="destinatario">Destinatario</option>
+						<option value="tlfno">Telefono</option>
+						<option value="direccion">Direccion</option>
+						<option value="poblacion">Poblacion</option>
+						<option value="cp">Codigo Postal</option>
+						<option value="email">Email</option>
+						<option value="fechaCreacion">Fecha Creacion</option>
+						<option value="fechaEntrega">Fecha Entrega</option>
+						<option value="observaciones">Observaciones</option>
 					</select>
 				 	
 				</div>
 				<div class="form-group">
 					<label>Texto</label>
-				 	<input type="text" class="form-control" name="destinatario" value="">
+				 	<input type="text" class="form-control" name="texto" value="">
 				</div>
 				<div class="row">
 					<div class="col-xs-12" align="right">
