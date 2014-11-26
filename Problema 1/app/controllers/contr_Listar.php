@@ -7,13 +7,15 @@ $Contr_listar = new Modelo ();
 $TAMANO_PAGINA = 3;
 
 // examino la página a mostrar y el inicio del registro a mostrar
+
+
 $pagina = isset ( $_GET ["pagina"] ) ? $_GET ["pagina"] : 1;
+$inicio;
+$total_paginas;
+$envios=paginarLista($Contr_listar, $TAMANO_PAGINA,$pagina,$total_paginas,$inicio);
 
-$inicio = ($pagina - 1) * $TAMANO_PAGINA;
 
-$total_paginas = ceil ( $Contr_listar->NumReg () / $TAMANO_PAGINA );
-
-$envios = $Contr_listar->Listar ( "select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$TAMANO_PAGINA );
+//$envios = $Contr_listar->Listar ( "select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$TAMANO_PAGINA );
 
 // calculo el total de páginas
 
@@ -22,4 +24,13 @@ $envios = $Contr_listar->Listar ( "select * from envio inner join tbl_provincias
 /*
  * //pongo el número de registros total, el tamaño de página y la p�gina que se muestra
  */
+function paginarLista($contr,$tamaño,& $pagina,& $total_paginas, & $inicio )
+{
+	$inicio = ($pagina - 1) * $tamaño;
+	$total_paginas = ceil ( $contr->NumReg () / $tamaño );
+	
+	return $contr->GetLista($inicio, $tamaño );
+	
+}
+
 include VIEW_DIR.'mostrar_envios.php';

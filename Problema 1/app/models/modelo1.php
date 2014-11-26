@@ -16,8 +16,9 @@ class Modelo
 	 * @param resource $con
 	 * @return multitype:array
 	 */
-	public function & Listar($con)
+	private function & Listar($con)
 	{
+		
 		$lista=array();
 		$Consulta=$this->baseDatos->Consulta($con);
 		while ($reg=$this->baseDatos->fetch_array($Consulta))
@@ -37,6 +38,12 @@ class Modelo
 			
 		}
 		return $lista;
+	}
+	
+	public function GetLista($inicio, $tamaño)
+	{
+		$sql="select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$tamaño;
+		return $this->Listar($sql);
 	}
 	/**
 	 * Cuenta los numeros de registros
@@ -102,11 +109,11 @@ class Modelo
 		$Consulta=$this->baseDatos->Consulta("update envio set fechaEntrega='".$fecha_ac."',estado='e' where id=".$cod);
 	}
 	
-	public function Busca($campo,$valor)
+	public function Busca($campo,$valor,$inicio,$tamaño_pag)
 	{
 		$lista=array();
 		//$Consulta=$this->baseDatos->Consulta("select * from envio where  ".$campo." LIKE '%".$valor."%'");
-		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%'");
+		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);
 		
 		
 	}

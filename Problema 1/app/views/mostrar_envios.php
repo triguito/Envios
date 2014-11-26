@@ -53,7 +53,7 @@
 		</div>
 	</div>
 	
-	<p>Número de registros encontrados:<?= $Contr_listar->NumReg()?> <p>
+	<p>Número de registros encontrados:<?= isset($Contr_listar)? $Contr_listar->NumReg(): $Contr_Buscar->NumReg() ?> <p>
 	<p>Se muestran páginas de <?= $TAMANO_PAGINA ?> registros cada una<p>
 	<p> Mostrando la página <?= $pagina ?> de <?= $total_paginas ?><p>
 

@@ -40,7 +40,8 @@ CREATE TABLE `bdkenollega`.`envio` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-alter table envio add constraint nombre foreign key (provincia) references tbl_provincias(cod);
+alter table envio add constraint nombr
+e foreign key (provincia) references tbl_provincias(cod);
 
 -- 
 -- Volcar la base de datos para la tabla `tbl_comunidadesautonomas`
