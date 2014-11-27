@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `tbl_provincias` (
 DROP TABLE IF EXISTS `envio`;
 CREATE TABLE `bdkenollega`.`envio` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `destinatario` VARCHAR(500) NOT NULL,
+  `destinatario` VARCHAR(50) NOT NULL,
   `tlfno` VARCHAR(45) NOT NULL,
   `direccion` VARCHAR(45) NULL,
   `poblacion` VARCHAR(45) NULL,
@@ -40,8 +40,18 @@ CREATE TABLE `bdkenollega`.`envio` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-alter table envio add constraint nombr
-e foreign key (provincia) references tbl_provincias(cod);
+alter table envio add constraint nombre foreign key (provincia) references tbl_provincias(cod);
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `bdkenollega`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user` VARCHAR(50) NOT NULL,
+  `pass` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 -- 
 -- Volcar la base de datos para la tabla `tbl_comunidadesautonomas`
@@ -123,3 +133,8 @@ INSERT INTO `tbl_provincias` VALUES ('01', 'Alava', 16),
 ('50', 'Zaragoza', 2),
 ('51', 'Ceuta', 18),
 ('52', 'Melilla', 19);
+
+-- 
+-- volcar dato en la tabla usuario
+-- 
+INSERT INTO `usuarios` VALUES (null,'Admin', 'pass');
