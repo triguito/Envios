@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once LIBRARY_DIR.'bd.php';
 /***
  * clase para el modelo de la base de datos

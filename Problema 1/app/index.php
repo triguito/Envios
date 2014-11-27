@@ -12,8 +12,8 @@ define("CSS_DIR",BASE_DIR.'css/');
 
 
 
-if(isset($_SESSION['estaDentro']) && $_SESSION['estaDentro'])
-{
+/*if(isset($_SESSION['estaDentro']) && $_SESSION['estaDentro'])
+{*/
 include VIEW_DIR.'base.php';
 function ir_pagina($accion) 
 {
@@ -42,16 +42,16 @@ function ir_pagina($accion)
 			return include VIEW_DIR.'cuerpo.php';
 	}
 }
-}
-else
+//}
+/* else
 {
-	if($_POST)
+	if(!$_POST)
 	{
 		include VIEW_DIR.'login.php';
 	}
 	else 
 	{
-		include CTRL_DIR.'contr_verificaUsu';
+		include CTRL_DIR.'contr_verif_Usu.php';
 	}
 }
 

@@ -135,6 +135,14 @@ INSERT INTO `tbl_provincias` VALUES ('01', 'Alava', 16),
 ('52', 'Melilla', 19);
 
 -- 
+-- volcar datos en la tabla envios
+-- 
+
+
+
+INSERT INTO `envio` VALUES(50,'','','','','','','','','','');
+
+-- 
 -- volcar dato en la tabla usuario
 -- 
 INSERT INTO `usuarios` VALUES (null,'Admin', 'pass');

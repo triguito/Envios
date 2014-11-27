@@ -17,7 +17,7 @@
 	            <div class="form-box">
 	                <form action="" method="post">
 	                    <input name="user" type="text" placeholder="username">
-	                    <input name type="password" placeholder="password">
+	                    <input name="pass" type="password" placeholder="password">
 	                    <button class="btn btn-info btn-block login" type="submit">Acceder</button>
 	                </form>
 	            </div>
