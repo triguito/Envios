@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+//session_destroy();
 $_SESSION["user"]="Admin";
 $_SESSION["pass"]="Admin";
 define("BASE_DIR", __DIR__.'/');
@@ -12,16 +13,28 @@ define("CSS_DIR",BASE_DIR.'css/');
 
 
 
-/*if(isset($_SESSION['estaDentro']) && $_SESSION['estaDentro'])
-{*/
-include VIEW_DIR.'base.php';
-function ir_pagina($accion) 
+if(isset($_SESSION['estaDentro']) && $_SESSION['estaDentro'])
 {
-	
+	include VIEW_DIR.'base.php';
+}
+else
+{
+	if(!$_POST)
+	{
+		include VIEW_DIR.'login.php';
+	}
+	else 
+	{
+		include CTRL_DIR.'contr_verif_Usu.php';
+	}
+}
+function ir_pagina($accion)
+{
+
 	switch ($accion)
 	{
 		case "ver_lista":
-				echo CTRL_DIR;
+			echo CTRL_DIR;
 			return	include CTRL_DIR.'contr_Listar.php';
 		case "Añadir_envio":
 			return include CTRL_DIR.'contr_Anadir.php';
@@ -37,21 +50,12 @@ function ir_pagina($accion)
 			unset($_SESSION["campo"]);
 			unset($_SESSION["texto"]);
 			return	include CTRL_DIR.'contr_Listar.php';
-			
+
 		default:
 			return include VIEW_DIR.'cuerpo.php';
 	}
+	include VIEW_DIR.'base.php';
 }
-//}
-/* else
-{
-	if(!$_POST)
-	{
-		include VIEW_DIR.'login.php';
-	}
-	else 
-	{
-		include CTRL_DIR.'contr_verif_Usu.php';
-	}
-}
+
+//Controlar el filtrado de campo buscar y cuando punga una fecha poner desde una fecha hasta otra.
 

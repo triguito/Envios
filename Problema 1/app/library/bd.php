@@ -36,7 +36,7 @@ class Bd
 	 */
 	public function Consulta($q)
 	{
-		echo "<pre style='border:1px #999; padding:.5em; margin:.5em; border-radiux:3px; background:#aaa'>$q</pre>";
+		//echo "<pre style='border:1px #999; padding:.5em; margin:.5em; border-radiux:3px; background:#aaa'>$q</pre>";
 		$cons=mysqli_query($this->resource,$q);
 		
 		if (! $cons)
@@ -54,5 +54,11 @@ class Bd
 	public function fetch_array($cons)
 	{
 		return mysqli_fetch_array($cons,MYSQL_BOTH);
+	}
+	
+	public function EscaparString($var)
+	{
+		$StringEsc=mysqli_real_escape_string($this->resource, $var);
+		return $StringEsc;
 	}
 }

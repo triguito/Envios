@@ -82,6 +82,7 @@ class Modelo
 	 */
 	public function Introducir($dest,$tlf,$direc,$pobla,$cp,$correo,$obs,$prov)
 	{
+		$dest=$this->baseDatos->EscaparString($dest);
 		$fecha_ac = date ( 'Y-m-d' );
 		$Consulta=$this->baseDatos->Consulta("INSERT INTO `envio` VALUES(null,'".$dest."','".$tlf."','".$direc."','".$pobla."','".$cp."','".$correo."','P','".$fecha_ac."',null,'".$obs."','".$prov."')");
 	}

@@ -7,3 +7,11 @@
   <a href="?accion=Buscar_envio" class="list-group-item list-group-item-warning">Buscar envios</a>
   <a href="?accion=BorraFiltro" class="list-group-item list-group-item-danger">Eliminar filtro</a>
 </div>
+
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
+    Usuarios
+  </a>
+  <a href="?accion=Añadir_usu" class="list-group-item list-group-item-info">Añadir nuevo usuario</a>
+  <a href="?accion=Borrar_usu" class="list-group-item list-group-item-danger">Borrar usuario</a>
+</div>

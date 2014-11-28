@@ -138,11 +138,13 @@ INSERT INTO `tbl_provincias` VALUES ('01', 'Alava', 16),
 -- volcar datos en la tabla envios
 -- 
 
-
-
-INSERT INTO `envio` VALUES(50,'','','','','','','','','','');
-
 -- 
 -- volcar dato en la tabla usuario
 -- 
-INSERT INTO `usuarios` VALUES (null,'Admin', 'pass');
+INSERT INTO `usuarios` VALUES (null,'admin', 'pass');
+
+INSERT INTO `envio` VALUES(null,'Abraham','695142398','trueno','Huelva','11592','abra@bra.com','p','2004-12-05',null,'tito','21');
+INSERT INTO `envio` VALUES(null,'Emilio','691452983','relampago','Huelva','21006','emi@clase.com','p','2004-11-10',null,null,'21');
+INSERT INTO `envio` VALUES(null,'Carlos','642951398','cima','Huelva','21006','carlos@bra.com','p','2014-10-15',null,null,'21');
+INSERT INTO `envio` VALUES(null,'Marta','965231498','sol','Huelva','21006','marta@bra.com','p','2014-11-25',null,null,'21');
+INSERT INTO `envio` VALUES(null,'Sara','961452398','Luna','Huelva','21006','sara@bra.com','p','2014-09-05',null,null,'21');

@@ -73,7 +73,7 @@ if ($_POST) {
 		
 		$Contr_Anadir->Introducir( $enviar ['dest'], $enviar ["tlf"], $enviar ["direc"], $enviar["pobla"],
 				 $enviar ["cp"], $enviar ["email"], $enviar ["obs"], $enviar ["prov"] );
-		header('Location:http://index.php');
+		header('Location:http://localhost/Envios/Problema%201/app/?accion=ver_lista');
 	}
 	else 
 	{
