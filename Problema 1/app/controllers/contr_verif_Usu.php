@@ -22,3 +22,8 @@ foreach ($Usuarios as $valor)
 	}
 }
 
+/*if (crypt($password, $dbHash) == $dbHash)
+    echo 'El usuario ha sido autenticado correctamente';
+else
+    die('Mal Password');
+?>*/

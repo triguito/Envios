@@ -32,4 +32,9 @@ class Modelo_usu
 		$sql="select * from usuarios";
 		return $this->Listar($sql);
 	}
+	public function AnadirUsu($usu,$pass)
+	{
+		$sql="insert into usuarios values(null,'".$usu."','".$pass."');";
+		$Consulta=$this->baseDatos->Consulta($sql);
+	}
 }

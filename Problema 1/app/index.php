@@ -50,6 +50,8 @@ function ir_pagina($accion)
 			unset($_SESSION["campo"]);
 			unset($_SESSION["texto"]);
 			return	include CTRL_DIR.'contr_Listar.php';
+		case "Añadir_usu":
+			return include CTRL_DIR.'contr_anadir_usu.php';
 
 		default:
 			return include VIEW_DIR.'cuerpo.php';
