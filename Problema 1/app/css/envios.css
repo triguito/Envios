@@ -10,7 +10,9 @@ h1{
     font-family: 'Princess Sofia', cursive;
     background-color:#ADD8E6;
 }
-
+h4{
+	text-align: right;
+}
 table{
 	text-align: center;
 }

@@ -17,44 +17,47 @@ $errores = array (
 		'pobla' => '',
 		'email' => ''
 );
-include LIBRARY_DIR.'library_helper.php';
+include_once LIBRARY_DIR.'library_helper.php';
+$funcion=new Libreria();
+
+
 
 $bandera = false;
 if ($_POST) {
 	/***
 	 * filtra los campos del formulario
 	 */
-	$dest = ValorPost ( "destinatario" );
+	$dest = $funcion->ValorPost ( "destinatario" );
 	if (! ValidaTexto ( $dest ) || strlen ( $dest ) > 50) {
 		$errores ['dest'] = 'El campo Destinatario debe tener algún valor estar formado por letras y tener una longitud menor de 50';
 		$bandera = true;
 	}
 	
-	$tlf = ValorPost ( "telefono" );
+	$tlf = $funcion->ValorPost ( "telefono" );
 	if (! ValidaTexto ( $tlf, "numero" ) || strlen ( $tlf ) > 15) {
 		$errores ['tlf'] = 'El campo Telefono debe tener algún valor estar formado numero de telefono nacional menor de 15';
 		$bandera = true;
 	}
 	
-	$direc = ValorPost ( "direccion" );
+	$direc = $funcion->ValorPost ( "direccion" );
 	if (! ValidaTexto ( $direc, "direccion" ) || strlen ( $direc ) > 45) {
 		$errores ['direc'] = 'La dirección debe tener algún valor estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$cp = ValorPost ( "cp" );
+	$cp = $funcion->ValorPost ( "cp" );
 	if (! ValidaTexto ( $cp, "numero" ) || strlen ( $cp ) > 5) {
 		$errores ['cp'] = 'El Cp debe tener algún valor  o estar formado con longitud menor a 5';
 		$bandera = true;
 	}
 	
-	$pobla = ValorPost ( "poblacion" );
+	$pobla = $funcion->ValorPost ( "poblacion" );
 	if (! ValidaTexto ( $pobla ) || strlen ( $pobla ) > 45) {
 		$errores ['pobla'] = 'La poblacion debe tener algún valor  o estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$correo = ValorPost ( "email" );
+	$correo = $funcion->ValorPost ( "email" );
 	if (! ValidaCorreo ( $correo )) {
 		$errores ["email"] = "Formato incorrecto";
 		$bandera = true;

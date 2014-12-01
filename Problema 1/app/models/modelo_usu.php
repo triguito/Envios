@@ -1,12 +1,15 @@
 <?php
 include_once LIBRARY_DIR.'bd.php';
-/***
+/**
  * clase para el modelo de la base de datos
+ * @author Angel
 */
 class Modelo_usu
 {
 	private $baseDatos;
-
+	/**
+	 * Constructor de base de datos
+	 */
 	public function __construct()
 	{
 		$this->baseDatos=new Bd();
@@ -27,13 +30,24 @@ class Modelo_usu
 		}
 		return $lista;
 	}
+	/**
+	 * funcion para ver los usuarios existentes en el sistema
+	 * @return string  
+	 */
 	public function GetUsu()
 	{
 		$sql="select * from usuarios";
 		return $this->Listar($sql);
 	}
+	/**
+	 * Añade un usuario a la base de datos
+	 * @param string $usu
+	 * @param string $pass
+	 */
 	public function AnadirUsu($usu,$pass)
 	{
+		$dest=$this->baseDatos->EscaparString($usu);
+		$dest=$this->baseDatos->EscaparString($pass);
 		$sql="insert into usuarios values(null,'".$usu."','".$pass."');";
 		$Consulta=$this->baseDatos->Consulta($sql);
 	}

@@ -2,8 +2,6 @@
 <?php
 session_start();
 //session_destroy();
-$_SESSION["user"]="Admin";
-$_SESSION["pass"]="Admin";
 define("BASE_DIR", __DIR__.'/');
 define("CTRL_DIR", BASE_DIR.'controllers/');
 define("MODEL_DIR", BASE_DIR.'models/');
@@ -26,38 +24,10 @@ else
 	else 
 	{
 		include CTRL_DIR.'contr_verif_Usu.php';
+		$_SESSION["tiempo"]=date ("G:i:s");
 	}
 }
-function ir_pagina($accion)
-{
 
-	switch ($accion)
-	{
-		case "ver_lista":
-			echo CTRL_DIR;
-			return	include CTRL_DIR.'contr_Listar.php';
-		case "Añadir_envio":
-			return include CTRL_DIR.'contr_Anadir.php';
-		case "Modificar_envio":
-			return include CTRL_DIR.'contr_Mod.php';
-		case "Eliminar_envio":
-			return include CTRL_DIR.'contr_Eliminar.php';
-		case "Anotar_recepcion":
-			return include CTRL_DIR.'contr_Recepcion.php';
-		case "Buscar_envio":
-			return include CTRL_DIR.'contr_Buscar.php';
-		case "BorraFiltro":
-			unset($_SESSION["campo"]);
-			unset($_SESSION["texto"]);
-			return	include CTRL_DIR.'contr_Listar.php';
-		case "Añadir_usu":
-			return include CTRL_DIR.'contr_anadir_usu.php';
-
-		default:
-			return include VIEW_DIR.'cuerpo.php';
-	}
-	include VIEW_DIR.'base.php';
-}
 
 //Controlar el filtrado de campo buscar y cuando punga una fecha poner desde una fecha hasta otra.
 

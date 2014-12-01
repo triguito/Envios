@@ -3,12 +3,13 @@ include_once MODEL_DIR.'modelo1.php';
 
 $Contr_Buscar = new Modelo ();
 
-include LIBRARY_DIR.'library_helper.php';
+include_once LIBRARY_DIR.'library_helper.php';
+$funcion=new Libreria();
 
 if ($_POST)
 {
-	$campo = ValorPost ( "campo" );
-	$texto = ValorPost ( "texto" );
+	$campo = $funcion->ValorPost ( "campo" );
+	$texto = $funcion->ValorPost ( "texto" );
 	$_SESSION["campo"]=$campo;
 	$_SESSION["texto"]=$texto;
 	
@@ -18,7 +19,7 @@ if ($_POST)
 	$inicio;
 	$total_paginas;
 	
-	$envios=paginarBusca($Contr_Buscar, $TAMANO_PAGINA,$pagina,$total_paginas,$inicio,$campo,$texto);
+	$envios=$funcion->paginarBusca($Contr_Buscar, $TAMANO_PAGINA,$pagina,$total_paginas,$inicio,$campo,$texto);
 	
 	include VIEW_DIR.'mostrar_envios.php';
 	
@@ -26,14 +27,4 @@ if ($_POST)
 else
 {
 	include VIEW_DIR.'form_buscar.php';
-}
-
-function paginarBusca($contr,$tamaño,& $pagina,& $total_paginas, & $inicio,$campo,$texto)
-{
-
-	var_dump($pagina);
-	$inicio = ($pagina - 1) * $tamaño;
-	$total_paginas = ceil ( $contr->NumRegBuscar($campo,$texto) / $tamaño );
-
-	return $contr->Busca($campo,$texto,$inicio,$tamaño);
 }

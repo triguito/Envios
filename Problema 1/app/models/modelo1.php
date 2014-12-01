@@ -1,7 +1,8 @@
 <?php
 include_once LIBRARY_DIR.'bd.php';
-/***
+/**
  * clase para el modelo de la base de datos
+ * @author Angel
  */
 class Modelo
 {
@@ -39,12 +40,21 @@ class Modelo
 		}
 		return $lista;
 	}
-	
+	/**
+	 * Lista todos los envios con un rango para la paginacion
+	 * @param string $inicio
+	 * @param string $tamaño
+	 * @return string 
+	 */
 	public function GetLista($inicio, $tamaño)
 	{
 		$sql="select * from envio inner join tbl_provincias p on envio.provincia=p.cod  order by fechaCreacion limit " . $inicio . ",".$tamaño;
 		return $this->Listar($sql);
 	}
+	/**
+	 * Lista todas las provincias
+	 * @return string
+	 */
 	public function Getprovincia()
 	{
 		$sql="select * from tbl_provincias";
@@ -60,6 +70,12 @@ class Modelo
 		$reg=$this->baseDatos->fetch_array($Consulta);
 		return $reg[0];
 	}
+	/**
+	 * Devuelve el numero de registros encontrados
+	 * @param string $campo
+	 * @param string $valor
+	 * @return string
+	 */
 	public function NumRegBuscar($campo,$valor)
 	{
 		$sql="select count(*) from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$campo." LIKE '%".$valor."%'";
@@ -83,6 +99,13 @@ class Modelo
 	public function Introducir($dest,$tlf,$direc,$pobla,$cp,$correo,$obs,$prov)
 	{
 		$dest=$this->baseDatos->EscaparString($dest);
+		$dest=$this->baseDatos->EscaparString($tlf);
+		$dest=$this->baseDatos->EscaparString($direc);
+		$dest=$this->baseDatos->EscaparString($pobla);
+		$dest=$this->baseDatos->EscaparString($cp);
+		$dest=$this->baseDatos->EscaparString($correo);
+		$dest=$this->baseDatos->EscaparString($obs);
+		$dest=$this->baseDatos->EscaparString($prov);
 		$fecha_ac = date ( 'Y-m-d' );
 		$Consulta=$this->baseDatos->Consulta("INSERT INTO `envio` VALUES(null,'".$dest."','".$tlf."','".$direc."','".$pobla."','".$cp."','".$correo."','P','".$fecha_ac."',null,'".$obs."','".$prov."')");
 	}
@@ -101,6 +124,16 @@ class Modelo
 	 */
 	public function Modificar($cod,$dest,$tlf,$direc,$pobla,$cp,$correo,$obs,$prov)
 	{
+		$dest=$this->baseDatos->EscaparString($cod);
+		$dest=$this->baseDatos->EscaparString($dest);
+		$dest=$this->baseDatos->EscaparString($tlf);
+		$dest=$this->baseDatos->EscaparString($direc);
+		$dest=$this->baseDatos->EscaparString($pobla);
+		$dest=$this->baseDatos->EscaparString($correo);
+		$dest=$this->baseDatos->EscaparString($correo);
+		$dest=$this->baseDatos->EscaparString($obs);
+		$dest=$this->baseDatos->EscaparString($prov);
+		
 		$Consulta=$this->baseDatos->Consulta("update envio set destinatario='".$dest."',tlfno='".$tlf."',direccion='".$direc."'
 				,poblacion='".$pobla."',cp='".$cp."',email='".$correo."',obsevaciones='".$obs."',provincia='".$prov."' where id=".$cod);
 	}
@@ -110,6 +143,7 @@ class Modelo
 	 */
 	public function Borrar($cod)
 	{
+		$dest=$this->baseDatos->EscaparString($cod);
 		$Consulta=$this->baseDatos->Consulta("delete from envio where id=".$cod);
 	}
 	/**
@@ -118,13 +152,23 @@ class Modelo
 	 */
 	public function Recepcion($cod)
 	{
+		$dest=$this->baseDatos->EscaparString($cod);
 		$fecha_ac = date ( 'Y-m-d' );
 	
 		$Consulta=$this->baseDatos->Consulta("update envio set fechaEntrega='".$fecha_ac."',estado='e' where id=".$cod);
 	}
-	
+	/**
+	 * 
+	 * @param string $campo
+	 * @param string $valor
+	 * @param string $inicio
+	 * @param string $tamaño_pag
+	 * @return Ambigous <multitype:multitype: , multitype:string >
+	 */
 	public function Busca($campo,$valor,$inicio,$tamaño_pag)
 	{
+		$dest=$this->baseDatos->EscaparString($campo);
+		$dest=$this->baseDatos->EscaparString($valor);
 		$lista=array();
 		//$Consulta=$this->baseDatos->Consulta("select * from envio where  ".$campo." LIKE '%".$valor."%'");
 		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$_SESSION["campo"]." LIKE '%".$_SESSION["texto"]."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);

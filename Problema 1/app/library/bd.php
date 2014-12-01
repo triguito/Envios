@@ -1,6 +1,8 @@
 <?php
-/***
- * Abstraccion de base de datos
+/**
+ * Abstraccion de la base de datos
+ * @author Angel
+ *
  */
 class Bd
 {
@@ -10,7 +12,9 @@ class Bd
 	private $bd;
 	
 	private $resource;
-	
+	/**
+	 * Constructor para la conexion de la base de datos
+	 */
 	public function __construct()
 	{
 		$this->host="localhost";
@@ -30,7 +34,7 @@ class Bd
 		return $this->resource;
 	}
 	/**
-	 * 
+	 * Realiza la consulta
 	 * @param resource $q
 	 * @return resource
 	 */
@@ -55,7 +59,11 @@ class Bd
 	{
 		return mysqli_fetch_array($cons,MYSQL_BOTH);
 	}
-	
+	/**
+	 * Para filtrar el campo de usuarios para no puedan inyectar codigo
+	 * @param string $var
+	 * @return string
+	 */
 	public function EscaparString($var)
 	{
 		$StringEsc=mysqli_real_escape_string($this->resource, $var);
