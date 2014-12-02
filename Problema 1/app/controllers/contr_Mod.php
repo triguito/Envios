@@ -1,11 +1,14 @@
 <?php
 
 include_once MODEL_DIR.'modelo1.php';
+include_once LIBRARY_DIR.'library_helper.php';
 
 
 $Contr_Mod = new Modelo ();
 
-$provincia = $Contr_Mod->Listar ( "select * from tbl_provincias;" );
+$filtra=new filtrar();
+
+$provincia = $Contr_Mod->Getprovincia();
 
 $id= isset ( $_GET ["id"] ) ? $_GET ["id"] : "error";
 
@@ -17,8 +20,7 @@ $errores = array (
 		'pobla' => '',
 		'email' => ''
 );
-include_once LIBRARY_DIR.'library_helper.php';
-$funcion=new Libreria();
+
 
 
 
@@ -27,41 +29,43 @@ if ($_POST) {
 	/***
 	 * filtra los campos del formulario
 	 */
-	$dest = $funcion->ValorPost ( "destinatario" );
-	if (! ValidaTexto ( $dest ) || strlen ( $dest ) > 50) {
+	$dest = ValorPost ( "destinatario" );
+	if (! $filtra->ValidaTexto ( $dest ) || strlen ( $dest ) > 50) {
 		$errores ['dest'] = 'El campo Destinatario debe tener algún valor estar formado por letras y tener una longitud menor de 50';
 		$bandera = true;
 	}
 	
-	$tlf = $funcion->ValorPost ( "telefono" );
-	if (! ValidaTexto ( $tlf, "numero" ) || strlen ( $tlf ) > 15) {
+	$tlf = ValorPost ( "telefono" );
+	if (! $filtra->ValidaTexto ( $tlf, "numero" ) || strlen ( $tlf ) > 15) {
 		$errores ['tlf'] = 'El campo Telefono debe tener algún valor estar formado numero de telefono nacional menor de 15';
 		$bandera = true;
 	}
 	
-	$direc = $funcion->ValorPost ( "direccion" );
-	if (! ValidaTexto ( $direc, "direccion" ) || strlen ( $direc ) > 45) {
+	$direc = ValorPost ( "direccion" );
+	if (! $filtra->ValidaTexto ( $direc, "direccion" ) || strlen ( $direc ) > 45) {
 		$errores ['direc'] = 'La dirección debe tener algún valor estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$cp = $funcion->ValorPost ( "cp" );
-	if (! ValidaTexto ( $cp, "numero" ) || strlen ( $cp ) > 5) {
+	$cp = ValorPost ( "cp" );
+	if (! $filtra->ValidaTexto ( $cp, "numero" ) || strlen ( $cp ) > 5) {
 		$errores ['cp'] = 'El Cp debe tener algún valor  o estar formado con longitud menor a 5';
 		$bandera = true;
 	}
 	
-	$pobla = $funcion->ValorPost ( "poblacion" );
-	if (! ValidaTexto ( $pobla ) || strlen ( $pobla ) > 45) {
+	$pobla = ValorPost ( "poblacion" );
+	if (! $filtra->ValidaTexto ( $pobla ) || strlen ( $pobla ) > 45) {
 		$errores ['pobla'] = 'La poblacion debe tener algún valor  o estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$correo = $funcion->ValorPost ( "email" );
-	if (! ValidaCorreo ( $correo )) {
+	$correo = ValorPost ( "email" );
+	if (! $filtra->ValidaCorreo ( $correo )) {
 		$errores ["email"] = "Formato incorrecto";
 		$bandera = true;
 	}
+	$provincia=ValorPost("provincia");
+	$observaciones=ValorPost("Observaciones");
 	
 	if (! $bandera) {
 		$enviar = array (
@@ -71,15 +75,15 @@ if ($_POST) {
 				'cp' => $cp,
 				'pobla' => $pobla,
 				'email' => $correo,
-				'prov' => $_POST ["provincia"],
+				'prov' => $provincia,
 				'id'=>$id,
-				'obs' => $_POST ["Observaciones"]
+				'obs' => $observaciones
 		);
 		$fecha_ac = date ( 'Y-m-d' );
 	
 		$Contr_Mod->Modificar( $enviar['id'],$enviar ['dest'], $enviar ["tlf"], $enviar ["direc"], $enviar ["pobla"], 
 				$enviar ["cp"], $enviar ["email"], $enviar ["obs"], $enviar ["prov"] );
-		header('Location:http://localhost/Tema%202/Problema%201/app/');
+		header('Location:http://localhost/Envios/Problema%201/app/?accion=ver_lista');
 	}
 	else 
 	{
@@ -90,4 +94,10 @@ if ($_POST) {
 else 
 {
 	include VIEW_DIR.'form_anadir.php';
+}
+function ValorPost($campo, $default = '') {
+	if (isset ( $_POST [$campo] ))
+		return $_POST [$campo];
+	else
+		return $default;
 }

@@ -15,7 +15,7 @@ $errores = array (
 );
 include_once LIBRARY_DIR.'library_helper.php';
 
-$funcion=new Libreria();
+$funcion=new filtrar();
 
 
 $bandera = false;
@@ -23,37 +23,37 @@ if ($_POST) {
 	/***
 	 * para filtar todos los campos del formulario
 	 */
-	$dest = $funcion->ValorPost ( "destinatario" );
+	$dest = ValorPost ( "destinatario" );
 	if (! $funcion->ValidaTexto ( $dest ) || strlen ( $dest ) > 50) {
 		$errores ['dest'] = 'El campo Destinatario debe tener algún valor estar formado por letras y tener una longitud menor de 50';
 		$bandera = true;
 	}
 	
-	$tlf = $funcion->ValorPost ( "telefono" );
+	$tlf = ValorPost ( "telefono" );
 	if (! $funcion->ValidaTexto ( $tlf, "numero" ) || strlen ( $tlf ) > 15) {
 		$errores ['tlf'] = 'El campo Telefono debe tener algún valor estar formado numero de telefono nacional menor de 15';
 		$bandera = true;
 	}
 	
-	$direc = $funcion->ValorPost ( "direccion" );
+	$direc = ValorPost ( "direccion" );
 	if (! $funcion->ValidaTexto ( $direc, "direccion" ) || strlen ( $direc ) > 45) {
 		$errores ['direc'] = 'La dirección debe tener algún valor estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$cp = $funcion->ValorPost ( "cp" );
+	$cp = ValorPost ( "cp" );
 	if (! $funcion->ValidaTexto ( $cp, "numero" ) || strlen ( $cp ) > 5) {
 		$errores ['cp'] = 'El Cp debe tener algún valor  o estar formado con longitud menor a 5';
 		$bandera = true;
 	}
 	
-	$pobla = $funcion->ValorPost ( "poblacion" );
+	$pobla = ValorPost ( "poblacion" );
 	if (! $funcion->ValidaTexto ( $pobla ) || strlen ( $pobla ) > 45) {
 		$errores ['pobla'] = 'La poblacion debe tener algún valor  o estar formado con longitud menor a 45';
 		$bandera = true;
 	}
 	
-	$correo = $funcion->ValorPost ( "email" );
+	$correo = ValorPost ( "email" );
 	if (! $funcion->ValidaCorreo ( $correo )) {
 		$errores ["email"] = "Formato incorrecto";
 		$bandera = true;
@@ -84,6 +84,19 @@ if ($_POST) {
 else 
 {
 	include VIEW_DIR.'form_anadir.php';
+}
+/**
+ * devuelve $post para simplificar código
+ *
+ * @param string $campo
+ * @param string $default
+ * @return string
+ */
+function ValorPost($campo, $default = '') {
+	if (isset ( $_POST [$campo] ))
+		return $_POST [$campo];
+	else
+		return $default;
 }
 
 

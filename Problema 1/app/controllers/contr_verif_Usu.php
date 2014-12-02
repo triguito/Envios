@@ -4,12 +4,11 @@ include_once LIBRARY_DIR.'library_helper.php';
 
 $verificar=new Modelo_usu();
 
-$funcion=new Libreria();
+$funcion=new filtrar();
 
 $Usuarios=$verificar->GetUsu();
 
-$usuario = $funcion->ValorPost ( "user" );
-$contraseña = $funcion->ValorPost ( "pass" );
+
 
 foreach ($Usuarios as $valor)
 {
@@ -24,3 +23,5 @@ foreach ($Usuarios as $valor)
 		header('Location:http://localhost/Envios/Problema%201/app/');
 	}
 }
+
+

@@ -34,10 +34,20 @@ class Modelo_usu
 	 * funcion para ver los usuarios existentes en el sistema
 	 * @return string  
 	 */
-	public function GetUsu()
+	public function GetUsu($inicio, $tamaño)
 	{
-		$sql="select * from usuarios";
+		$sql="select * from usuarios limit " . $inicio . ",".$tamaño;
 		return $this->Listar($sql);
+	}
+	/**
+	 * Cuenta los numeros de registros
+	 * @return float
+	 */
+	public function NumReg()
+	{
+		$Consulta=$this->baseDatos->Consulta("select count(*) from envio");
+		$reg=$this->baseDatos->fetch_array($Consulta);
+		return $reg[0];
 	}
 	/**
 	 * Añade un usuario a la base de datos

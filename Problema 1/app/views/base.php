@@ -1,6 +1,5 @@
 <?php 
 include_once LIBRARY_DIR.'library_helper.php';
-$funcion=new Libreria();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,18 +27,7 @@ $funcion=new Libreria();
 			<?php include VIEW_DIR.'menu.php';?>
 		</div>
 		<div class="col-xs-9">
-			<?php
-			if(isset($_GET['accion']))
-			{
-				$accion=$_GET['accion'];
-			}
-			else 
-			{
-				$accion='';
-			} 
-
-			$funcion->ir_pagina($accion);
-			?>
+			<?php $this->ProcesaPeticionAplicacion(); ?>
 		</div>
 		<div class="col-xs-4">
 

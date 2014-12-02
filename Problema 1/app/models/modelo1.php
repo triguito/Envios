@@ -99,13 +99,13 @@ class Modelo
 	public function Introducir($dest,$tlf,$direc,$pobla,$cp,$correo,$obs,$prov)
 	{
 		$dest=$this->baseDatos->EscaparString($dest);
-		$dest=$this->baseDatos->EscaparString($tlf);
-		$dest=$this->baseDatos->EscaparString($direc);
-		$dest=$this->baseDatos->EscaparString($pobla);
-		$dest=$this->baseDatos->EscaparString($cp);
-		$dest=$this->baseDatos->EscaparString($correo);
-		$dest=$this->baseDatos->EscaparString($obs);
-		$dest=$this->baseDatos->EscaparString($prov);
+		$tlf=$this->baseDatos->EscaparString($tlf);
+		$direc=$this->baseDatos->EscaparString($direc);
+		$pobla=$this->baseDatos->EscaparString($pobla);
+		$cp=$this->baseDatos->EscaparString($cp);
+		$correo=$this->baseDatos->EscaparString($correo);
+		$obs=$this->baseDatos->EscaparString($obs);
+		$prov=$this->baseDatos->EscaparString($prov);
 		$fecha_ac = date ( 'Y-m-d' );
 		$Consulta=$this->baseDatos->Consulta("INSERT INTO `envio` VALUES(null,'".$dest."','".$tlf."','".$direc."','".$pobla."','".$cp."','".$correo."','P','".$fecha_ac."',null,'".$obs."','".$prov."')");
 	}
@@ -124,18 +124,18 @@ class Modelo
 	 */
 	public function Modificar($cod,$dest,$tlf,$direc,$pobla,$cp,$correo,$obs,$prov)
 	{
-		$dest=$this->baseDatos->EscaparString($cod);
+		$cod=$this->baseDatos->EscaparString($cod);
 		$dest=$this->baseDatos->EscaparString($dest);
-		$dest=$this->baseDatos->EscaparString($tlf);
-		$dest=$this->baseDatos->EscaparString($direc);
-		$dest=$this->baseDatos->EscaparString($pobla);
-		$dest=$this->baseDatos->EscaparString($correo);
-		$dest=$this->baseDatos->EscaparString($correo);
-		$dest=$this->baseDatos->EscaparString($obs);
-		$dest=$this->baseDatos->EscaparString($prov);
+		$tlf=$this->baseDatos->EscaparString($tlf);
+		$direc=$this->baseDatos->EscaparString($direc);
+		$pobla=$this->baseDatos->EscaparString($pobla);
+		$cp=$this->baseDatos->EscaparString($cp);
+		$correo=$this->baseDatos->EscaparString($correo);
+		$obs=$this->baseDatos->EscaparString($obs);
+		$prov=$this->baseDatos->EscaparString($prov);
 		
 		$Consulta=$this->baseDatos->Consulta("update envio set destinatario='".$dest."',tlfno='".$tlf."',direccion='".$direc."'
-				,poblacion='".$pobla."',cp='".$cp."',email='".$correo."',obsevaciones='".$obs."',provincia='".$prov."' where id=".$cod);
+				,poblacion='".$pobla."',cp='".$cp."',email='".$correo."',observaciones='".$obs."',provincia='".$prov."' where id=".$cod);
 	}
 	/**
 	 * funcion que borra un registro de la base de datos introduciendo mediante parametro la id

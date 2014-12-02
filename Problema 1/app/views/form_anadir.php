@@ -34,7 +34,6 @@
 					<div class="form-group">
 						<label>Provincia</label>
 					 	<select name="provincia" class="form-control" >
-									<option value=""></option>
 									<?php foreach ($provincia as $valor) :?>
 									
 									<option value=<?=$valor['cod'];?>><?=$valor['nombre'];?></option>

@@ -5,7 +5,6 @@
 				<div class="form-group">
 					<label>Campo</label>
 					<select name="campo" class="form-control" >
-						<option></option>
 						<option value="destinatario">Destinatario</option>
 						<option value="tlfno">Telefono</option>
 						<option value="direccion">Direccion</option>

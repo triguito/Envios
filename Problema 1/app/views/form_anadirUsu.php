@@ -6,11 +6,11 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label>Usuario</label>
-				 	<input type="text" class="form-control" name="usuario">
+				 	<input type="text" class="form-control" name="usuario"><?=$errores["usu"] ?>
 				</div>
 				<div class="form-group">
 					<label>Contraseña</label> 
-					<input type="password" class="form-control" name="contraseña">
+					<input type="password" class="form-control" name="contraseña"><?=$errores["pass"] ?>
 				</div>
 				<div class="row">
 					<div class="col-xs-12" align="center">
