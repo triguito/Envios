@@ -1,7 +1,9 @@
-<div class="col-xs-9">
-	<h1 class="list-group-item-info">KeNoLLega S.L</h1>
-	<h4 class="list-group-item-info">Hora de entrada:<?=$_SESSION["tiempo"]?><span class="glyphicon glyphicon-log-out"></span></h4>
-</div>
 <div class="col-xs-3">
-	<h4>Salir<span class="glyphicon glyphicon-log-out"></span></h4>
+</div>
+<div class="col-xs-7">
+	<h2 class="list-group-item-info">KeNoLLega S.L</h2>
+</div>
+<div class="col-xs-2" id="hora">
+	<h4><label><a href="?accion=fuera">Salir<span class="glyphicon glyphicon-log-out"></span></a></</label></h4>
+	<h5 class="list-group-item-info">Hora de entrada:<?=$_SESSION["tiempo"]?></h5>
 </div>

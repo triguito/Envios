@@ -96,7 +96,9 @@ class Libreria {
 				return include CTRL_DIR . 'contr_Listar.php';
 			case "Añadir_usu" :
 				return include CTRL_DIR . 'contr_anadir_usu.php';
-			
+			case "fuera" :
+				session_destroy();
+				header('Location:http://localhost/Envios/Problema%201/app/');			
 			default :
 				return include VIEW_DIR . 'cuerpo.php';
 		}

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 //session_destroy();
@@ -24,7 +23,7 @@ else
 	else 
 	{
 		include CTRL_DIR.'contr_verif_Usu.php';
-		$_SESSION["tiempo"]=date ("G:i:s");
+		$_SESSION["tiempo"]=date ("G:i");
 	}
 }
 
