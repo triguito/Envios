@@ -22,15 +22,15 @@ if ($_POST)
 		{
 			$bandera=true;
 		}
-		else
-		{
-			echo "Usuario existente";
-		}
 	}
 	
 	if(!$bandera)
 	{
 		$anadir_usu->AnadirUsu($usuario,$contraseña);
+	}
+	else 
+	{
+		echo "El usuario ya existe";
 	}
 }
 else 

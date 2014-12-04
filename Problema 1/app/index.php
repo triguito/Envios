@@ -78,6 +78,8 @@ class ControladorFrontal
 				header('Location:http://localhost/Envios/Problema%201/app/');
 			case "Ver_usu" :
 				return include CTRL_DIR . 'contr_ListarUsu.php';
+			case "Modificar_usu" :
+				return include CTRL_DIR.'contr_ModUsu.php';
 			default :
 				return include VIEW_DIR . 'cuerpo.php';
 		}
