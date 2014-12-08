@@ -67,7 +67,8 @@ if ($_POST) {
 	$provincia=ValorPost("provincia");
 	$observaciones=ValorPost("Observaciones");
 	
-	if (! $bandera) {
+	if (! $bandera) 
+	{
 		$enviar = array (
 				'dest' => $dest,
 				'tlf' => $tlf,

@@ -5,7 +5,6 @@ $Contr_Buscar = new Modelo ();
 
 include_once LIBRARY_DIR.'library_helper.php';
 $funcion=new filtrar();
-
 if ($_POST)
 {
 	$campo = ValorPost ( "campo" );

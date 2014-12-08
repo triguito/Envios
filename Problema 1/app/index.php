@@ -80,6 +80,8 @@ class ControladorFrontal
 				return include CTRL_DIR . 'contr_ListarUsu.php';
 			case "Modificar_usu" :
 				return include CTRL_DIR.'contr_ModUsu.php';
+			case "Eliminar_usu" :
+				return include CTRL_DIR.'contr_EliminarUsu.php';
 			default :
 				return include VIEW_DIR . 'cuerpo.php';
 		}

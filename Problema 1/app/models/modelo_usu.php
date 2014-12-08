@@ -34,13 +34,17 @@ class Modelo_usu
 	 * funcion para ver los usuarios existentes en el sistema
 	 * @return string  
 	 */
-	
-	
 	public function GetUsu()
 	{
 		$sql="select * from usuarios";
 		return $this->Listar($sql);
 	}
+	/**
+	 * 
+	 * @param string $inicio
+	 * @param string $tamaño
+	 * @return Ambigous <multitype:multitype: , multitype:unknown >
+	 */
 	public function GetUsuLimit($inicio, $tamaño)
 	{
 		$sql="select * from usuarios limit " . $inicio . ",".$tamaño;
@@ -68,5 +72,20 @@ class Modelo_usu
 		$dest=$this->baseDatos->EscaparString($pass);
 		$sql="insert into usuarios values(null,'".$usu."','".$pass."');";
 		$Consulta=$this->baseDatos->Consulta($sql);
+	}
+	
+	public function ModUsu($cod,$usu,$pass)
+	{
+		$cod=$this->baseDatos->EscaparString($cod);
+		$usu=$this->baseDatos->EscaparString($usu);
+		$pass=$this->baseDatos->EscaparString($pass);
+	
+		$Consulta=$this->baseDatos->Consulta("update usuarios set user='".$usu."',pass='".$pass."' where id=".$cod);
+	}
+	
+	public function BorrarUsu($cod)
+	{
+		$cod=$this->baseDatos->EscaparString($cod);
+		$Consulta=$this->baseDatos->Consulta("delete from usuarios where id=".$cod);
 	}
 }

@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Mostrar</title>
-</head>
-<body>
 	<div id="menu">
 		<div class="row">
 		<div class="col-xs-3">
@@ -57,8 +50,3 @@
 			</div>
 		</div>
 	</div>
-	
-	
-</body>
-
-</html>

@@ -171,7 +171,8 @@ class Modelo
 		$dest=$this->baseDatos->EscaparString($valor);
 		$lista=array();
 		//$Consulta=$this->baseDatos->Consulta("select * from envio where  ".$campo." LIKE '%".$valor."%'");
-		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$_SESSION["campo"]." LIKE '%".$_SESSION["texto"]."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);
+		return $lista=$this->Listar("select * from envio inner join tbl_provincias p on envio.provincia=p.cod where  ".$_SESSION["campo"]
+				." LIKE '%".$_SESSION["texto"]."%' order by fechaCreacion limit " . $inicio . ",".$tamaño_pag);
 		
 		
 	}

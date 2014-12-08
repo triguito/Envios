@@ -15,7 +15,7 @@
 						href='?accion=Modificar_usu&id=<?=$valor['id']?>'><span
 							class="glyphicon glyphicon-pencil color"></span></a></td>
 					<td class="btn-danger"><a
-						href='?accion=Eliminar_envio&id=<?=$valor['id']?>'><span
+						href='?accion=Eliminar_usu&id=<?=$valor['id']?>'><span
 							class="glyphicon glyphicon-trash color"></span></a></td>
 				</tr>
 				<?php endforeach;?>
